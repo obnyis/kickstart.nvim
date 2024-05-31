@@ -614,7 +614,17 @@ require('lazy').setup({
         dockerls = {},
         docker_compose_language_service = {},
         -- gopls = {},
-        pylsp = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  ignore = { 'E501' },
+                },
+              },
+            },
+          },
+        },
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
