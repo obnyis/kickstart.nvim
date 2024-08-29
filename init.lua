@@ -164,8 +164,15 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Fallback mapping for block selection in Windows Terminal
+vim.keymap.set('n', '<leader>v', '<C-v>', { desc = '[V]isual block selection mode' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Buffer navigation
+vim.keymap.set('n', '[b', '<cmd>bprev<CR>', { desc = 'Go to previous [B]uffer'})
+vim.keymap.set('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next [B]uffer'})
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -387,7 +394,17 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+          },
+          grep_string = {
+            additional_args = {'--hidden'}
+          },
+          live_grep = {
+            additional_args = {'--hidden'}
+          }
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -797,9 +814,9 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
-          --['<Tab>'] = cmp.mapping.select_next_item(),
-          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
