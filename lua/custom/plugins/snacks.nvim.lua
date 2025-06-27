@@ -15,7 +15,21 @@ return {
     -- scroll = { enabled = true },
     words = { enabled = true },
     bufdelete = { enabled = true },
-    lazygit = { enabled = true },
+    lazygit = {
+      enabled = true,
+      configure = true,
+      config = {
+        os = {
+          edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})',
+          editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
+          editAtLineAndWait = "nvim +{{line}} {{filename}}",
+          openDirInEditor = '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{dir}})',
+        },
+        gui = {
+          nerdFontsVersion = "3",
+        },
+      },
+    },
     scratch = { enabled = true },
   },
   keys = {
@@ -32,7 +46,7 @@ return {
     { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
     { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-    { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+    { "<leader>gg", function() Snacks.lazygit({cwd = Snacks.git.get_root()}) end, desc = "Lazygit" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
   }
 }
