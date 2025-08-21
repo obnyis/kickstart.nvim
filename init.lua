@@ -497,6 +497,10 @@ require('lazy').setup({
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
+
+      { "ms-jpq/coq_nvim", branch = "coq" },
+      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+      { 'ms-jpq/coq.thirdparty', branch = "3p" }
     },
     config = function()
       -- Brief aside: **What is LSP?**
