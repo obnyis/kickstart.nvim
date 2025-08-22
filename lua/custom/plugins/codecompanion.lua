@@ -8,6 +8,9 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
-    opts = {},
+    opts = {
+      ---@module "codecompanion"
+      ---@type CodeCompanion.Config
+    },
   },
 }
