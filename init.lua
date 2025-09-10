@@ -162,6 +162,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.o.spelloptions = "camel"
+vim.o.spell = true
+vim.o.spelllang = "en_nz"
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
