@@ -6,6 +6,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
+    'lewis6991/async.nvim',
   },
   config = function()
     require('refactoring').setup()
@@ -22,11 +23,11 @@ return {
     vim.keymap.set('n', '<leader>rb', ':Refactor extract_block')
     vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file')
 
-    -- load refactoring Telescope extension
-    require('telescope').load_extension 'refactoring'
-
-    vim.keymap.set({ 'n', 'x' }, '<leader>rr', function()
-      require('telescope').extensions.refactoring.refactors()
-    end)
+    -- -- load refactoring Telescope extension
+    -- require('telescope').load_extension 'refactoring'
+    --
+    -- vim.keymap.set({ 'n', 'x' }, '<leader>rr', function()
+    --   require('telescope').extensions.refactoring.refactors()
+    -- end)
   end,
 }
