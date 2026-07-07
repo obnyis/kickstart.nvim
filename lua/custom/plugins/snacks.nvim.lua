@@ -20,10 +20,12 @@ return {
       configure = true,
       config = {
         os = {
+          -- Not using `editPreset = "nvim-remote",` here as it uses `--remote-tab` as an argument instead of `--remote`
           edit = '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})',
           editAtLine = '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" &&  nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")',
           editAtLineAndWait = "nvim +{{line}} {{filename}}",
           openDirInEditor = '[ -z "$NVIM" ] && (nvim -- {{dir}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{dir}})',
+          -- editInTerminal = true,
         },
         gui = {
           nerdFontsVersion = "3",

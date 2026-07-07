@@ -1,8 +1,10 @@
 -- git-conflict
 -- https://github.com/akinsho/git-conflict.nvim
 
+-- No longer maintained
 return {
   'akinsho/git-conflict.nvim',
+  cond = false,
   version = '*',
   config = function()
     ---@diagnostic disable-next-line: missing-fields

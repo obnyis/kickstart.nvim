@@ -6,6 +6,9 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     opts = {
+      current_line_blame_opts = {
+        use_focus = false,
+      },
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
