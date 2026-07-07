@@ -4,22 +4,21 @@
 return {
   {
     'olimorris/codecompanion.nvim',
+    cond = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'j-hui/fidget.nvim',
     },
     opts = {
-      ---@module "codecompanion"
-      ---@type CodeCompanion.Config
-      strategies = {
+      interactions = {
         chat = {
           tools = {
             opts = { wait_timeout = 3600000 },
           },
           adapter = {
             name = 'copilot',
-            model = 'gpt-5-mini',
+            model = 'claude-sonnet-4.6',
           },
         },
       },

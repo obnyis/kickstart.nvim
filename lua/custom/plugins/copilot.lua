@@ -7,6 +7,7 @@
 
 return {
   'zbirenbaum/copilot.lua',
+  cond = false,
   event = 'InsertEnter',
   keys = {
     {'<leader>cc', function() require('copilot.suggestion').toggle_auto_trigger() end, desc = 'Toggle Copilot Suggestion Auto Trigger', mode = { 'n' }},
@@ -18,6 +19,9 @@ return {
   },
   config = function()
     require('copilot').setup({
+      -- server = {
+      --   type = "binary",
+      -- },
       panel = {
         enabled = false,
       },
@@ -39,6 +43,10 @@ return {
         -- end,
         ["*"] = false,
       },
+      logger = {
+        print_log_level = vim.log.levels.ERROR,
+      },
     })
+    vim.schedule(require('copilot.command').disable)
   end,
 }
